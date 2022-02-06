@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Curso {
@@ -72,6 +73,14 @@ public class Curso {
 		OptionalDouble mediaAlunos = cursos.stream().mapToInt(c -> c.getAlunos()).average();
 		System.out.println(" A média de alunos matriculados é de " + Math.round(mediaAlunos.getAsDouble()));
 		demarca();
+
+//		transformando um filtro stream em lista
+		List<Curso> acimaDe50Alunos = cursos.stream().filter(c -> c.getAlunos() > 50).collect(Collectors.toList());
+		System.out.println("Cursos acima de 50 alunos matriculados: ");
+		acimaDe50Alunos.forEach(c -> System.out.println(c.nome));
+		demarca();
+		
+		
 
 	}
 }
