@@ -33,8 +33,12 @@ public class Curso {
 //		ordem decrescente de alunos 
 //		cursos.sort(Comparator.comparingInt(c -> c.getAlunos()));
 		cursos.sort(Comparator.comparingInt(Curso::getAlunos));
-		
+
 		cursos.forEach(c -> System.out.println(c.getNome()));
+		
+		
+//		lista de cursos com mais de 50 alunos
+		cursos.stream().filter(c -> c.getAlunos() > 50).forEach(c -> System.out.println(c.getNome()));
 
 	}
 }
