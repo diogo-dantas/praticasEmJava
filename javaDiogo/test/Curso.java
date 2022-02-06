@@ -2,8 +2,10 @@ package br.com.git.javaDiogo.test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.stream.Collectors;
@@ -85,9 +87,13 @@ public class Curso {
 		Map<String, Integer> acimaDe100 = cursos.stream().filter(c -> c.getAlunos() > 100)
 				.collect(Collectors.toMap(c -> c.getNome(), c -> c.getAlunos()));
 
-		acimaDe100.forEach((nome, alunos) -> 
-		System.out.println("Curso: " + nome + ", possui: " + alunos + " alunos."));
+		acimaDe100.forEach((nome, alunos) -> System.out.println("Curso: " + nome + ", possui: " + alunos + " alunos."));
 		demarca();
+
+//		ordenado por valor
+		List<Entry<String, Integer>> list = new LinkedList<>(acimaDe100.entrySet());
+		list.sort(Entry.comparingByValue());
+		list.forEach(System.out::println);
 
 	}
 }
