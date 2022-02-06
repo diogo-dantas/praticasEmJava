@@ -3,6 +3,7 @@ package br.com.git.javaDiogo.test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.stream.Collectors;
@@ -75,12 +76,18 @@ public class Curso {
 		demarca();
 
 //		transformando um filtro stream em lista
-		List<Curso> acimaDe50Alunos = cursos.stream().filter(c -> c.getAlunos() > 50).collect(Collectors.toList());
+		List<Curso> acimaDe50 = cursos.stream().filter(c -> c.getAlunos() > 50).collect(Collectors.toList());
 		System.out.println("Cursos acima de 50 alunos matriculados: ");
-		acimaDe50Alunos.forEach(c -> System.out.println(c.nome));
+		acimaDe50.forEach(c -> System.out.println(c.nome));
 		demarca();
-		
-		
+
+//		transformando um filtro stream em map
+		Map<String, Integer> acimaDe100 = cursos.stream().filter(c -> c.getAlunos() > 100)
+				.collect(Collectors.toMap(c -> c.getNome(), c -> c.getAlunos()));
+
+		acimaDe100.forEach((nome, alunos) -> 
+		System.out.println("Curso: " + nome + ", possui: " + alunos + " alunos."));
+		demarca();
 
 	}
 }
