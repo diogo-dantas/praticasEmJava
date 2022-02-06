@@ -3,6 +3,7 @@ package br.com.git.javaDiogo.test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Curso {
 
@@ -35,10 +36,22 @@ public class Curso {
 		cursos.sort(Comparator.comparingInt(Curso::getAlunos));
 
 		cursos.forEach(c -> System.out.println(c.getNome()));
-		
-		
+
 //		lista de cursos com mais de 50 alunos
 		cursos.stream().filter(c -> c.getAlunos() > 50).forEach(c -> System.out.println(c.getNome()));
+
+		Stream<String> nomes = cursos.stream().map(Curso::getNome);
+		
+		nomes.forEach(System.out::println);
+
+//		soma de total de matriculados em cursos com classe acima de 100 alunos		
+
+		int soma = cursos.stream().filter(c -> c.getAlunos() > 100).mapToInt(Curso::getAlunos).sum();
+
+		System.out.println(soma);
+
+//		lista de cursos com mais de 50 alunos, mostra quantidade de alunos
+		cursos.stream().filter(c -> c.getAlunos() > 50).map(Curso::getAlunos).forEach(System.out::println);
 
 	}
 }
