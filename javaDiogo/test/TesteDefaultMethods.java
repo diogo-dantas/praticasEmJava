@@ -25,9 +25,13 @@ public class TesteDefaultMethods {
 
 		cursos.sort(Comparator.comparing(String::length));
 
+//	outro exemplo de ordenação para Strings...
+//		cursos.sort(String.CASE_INSENSITIVE_ORDER);
+
 //		for (String c : cursos) {
 //			System.out.println(c);
 //		}
+		
 // melhor prática aplicando consumer ao método de cursos...
 // atribuindo o method reference para o println...
 
