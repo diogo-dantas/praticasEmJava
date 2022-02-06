@@ -1,5 +1,8 @@
 package br.com.git.javaDiogo.test;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -94,6 +97,20 @@ public class Curso {
 		List<Entry<String, Integer>> list = new LinkedList<>(acimaDe100.entrySet());
 		list.sort(Entry.comparingByValue());
 		list.forEach(System.out::println);
+		demarca();
+
+		LocalDate hoje = LocalDate.now();
+		System.out.println(hoje);
+
+		LocalDate diaSolicitado = LocalDate.of(2099, 01, 25);
+		System.out.println(diaSolicitado);
+
+		Period periodo = Period.between(hoje, diaSolicitado);
+		System.out.println(periodo);
+
+		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String dataFormatada = hoje.format(formatador);
+		System.out.println(dataFormatada);
 
 	}
 }
