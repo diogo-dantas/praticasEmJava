@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalDouble;
 import java.util.stream.Stream;
 
 public class Curso {
@@ -24,12 +25,10 @@ public class Curso {
 		return alunos;
 	}
 
-	
 	public static void demarca() {
 		System.out.println("-----------------------------");
 	}
 
-	
 	public static void main(String[] args) {
 
 		List<Curso> cursos = new ArrayList<Curso>();
@@ -68,8 +67,11 @@ public class Curso {
 		Optional<Curso> primeiroCurso = cursos.stream().filter(c -> c.getAlunos() > 50).findFirst();
 		System.out.println(primeiroCurso.get().nome);
 		demarca();
-		
 
+// 		calculando a media de alunos de todos os cursos da lista
+		OptionalDouble mediaAlunos = cursos.stream().mapToInt(c -> c.getAlunos()).average();
+		System.out.println(" A média de alunos matriculados é de " + Math.round(mediaAlunos.getAsDouble()));
+		demarca();
 
 	}
 }
